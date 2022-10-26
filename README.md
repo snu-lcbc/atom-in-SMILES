@@ -19,7 +19,7 @@ pip install git+https://github.com/snu-lcbc/atom-in-SMILES.git
 or clone it from the GitHub repository and install locally. 
 ```shell
 git clone https://github.com/snu-lcbc/atom-in-SMILES
-cd atomInSmiles
+cd atom-in-SMILES
 python setup.py install
 ```
    
