@@ -2,12 +2,8 @@
 
 ## Atom-in-SMILES tokenization.
 Tokenization is an important preprocessing step in natural language processing that may have a significant influence on prediction quality. 
-In this study we show that the conventional SMILES tokenization itself is at fault, resulting in tokens that fail to reflect the true nature of molecules.
-To address this we propose atom-in-SMILES approach, resolving the ambiguities in the genericness of SMILES tokens.
-Our findings in multiple translation tasks suggest that proper tokenization has a great impact on the prediction quality.
-Considering the prediction accuracy and token degeneration comparisons, atom-in-SMILES appears as an effective method to draw higher quality SMILES sequences out of AI-based chemical models than other tokenization schemes.
-We investigate the token degeneration, highlight its pernicious influence on prediction quality, quantify the token-level repetitions, and include generated examples for qualitative analysis.
-We believe that atom-in-SMILES tokenization can readily be utilized by the community at large, providing chemically accurate, tailor-made tokens for molecular prediction models.
+Atom-in-SMILES concept is developed to resolve the ambiguities in the genericness of SMILES tokens.
+Considering the prediction accuracy and token degeneration comparisons, atom-in-SMILES appears as an effective method to draw higher quality SMILES sequences out of AI-based chemical models than other tokenization schemes. For more details and results, please refer to the following reference ----.
 
 <hr style="background: transparent; border: 0.2px dashed;"/>
 
