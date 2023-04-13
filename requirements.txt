@@ -1,0 +1,12 @@
+deepsmiles==1.0.1
+matplotlib==3.6.2
+matplotlib-inline==0.1.6
+numpy==1.24.1
+pandas==1.5.2
+scikit-learn==1.2.0
+scipy==1.8.0
+seaborn==0.11.1
+selfies==1.0.4
+sentencepiece==0.1.95
+SmilesPE==0.0.3
+tqdm==4.64.1
