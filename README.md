@@ -1,9 +1,25 @@
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC_BY--NC_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
 
 ## Atom-in-SMILES tokenization.
-Tokenization is an important preprocessing step in natural language processing that may have a significant influence on prediction quality. 
-Atom-in-SMILES concept is developed to resolve the ambiguities in the genericness of SMILES tokens.
-Considering the prediction accuracy and token degeneration comparisons, atom-in-SMILES appears as an effective method to draw higher quality SMILES sequences out of AI-based chemical models than other tokenization schemes. For more details and results, please refer to the following reference ----.
+Tokenization is an important preprocessing step in natural language processing
+that may have a significant influence on prediction quality. This research showed
+that the traditional SMILES tokenization has a certain limitation that results in
+tokens failing to reflect the true nature of molecules. To address this issue, we
+developed the atom-in-SMILES tokenization scheme that eliminates ambiguities
+in the generic nature of SMILES tokens. Our results in multiple chemical
+translation and molecular property prediction tasks demonstrate that proper
+tokenization has a significant impact on prediction quality. In terms of prediction
+accuracy and token degeneration, atom-in-SMILES is more effective method in
+generating higher-quality SMILES sequences from AI-based chemical models
+compared to other tokenization and representation schemes. We investigated the
+degrees of token degeneration of various schemes and analyzed their adverse
+effects on prediction quality. Additionally, token-level repetitions were quantified,
+and generated examples were incorporated for qualitative examination. We
+believe that the atom-in-SMILES tokenization has a great potential to be
+adopted by broad related scientific communities, as it provides chemically
+accurate, tailor-made tokens for molecular property prediction, chemical
+translation, and molecular generative models.
+
 
 <hr style="background: transparent; border: 0.2px dashed;"/>
 
