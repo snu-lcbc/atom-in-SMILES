@@ -95,6 +95,8 @@ Run below commands to conduct an inference with the trained model.
 * `--model_type`: Specifies the type of model to use. `AIS` for Atom-in-SMILES tokenization scheme (`SMILES`, `SELFIES`, `DeepSmiles`, `SmilesPE`).
 * `--checkpoint_name`: Specifies the name of the checkpoint file that contains the trained model parameters.
 * `--input`: Specifies the input tokenized sequence for which the prediction should be made.
+* `--decode`: {greedy,beam}   Decoding method  (default: greedy)
+* `--beam_size`: BEAM_SIZE Beam size (a number of candidates for RetroTRAE) (default: 3)    
 For example:
 ```python
 python src/predict.py --model_type AIS  --checkpoint_name AIS_checkpoint.pth
