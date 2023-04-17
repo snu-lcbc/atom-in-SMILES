@@ -86,6 +86,21 @@ assert random_smiles == decoded_smiles_1
    
 <hr style="background: transparent; border: 0.5px dashed;"/>
 
+## Implementations
+### Single-step retrosynthesis
+First, [checkpoints files](https://drive.google.com/file/d/1tDKIKrKWevgTgJjF8QZpd1IKxZr_Pc1q/view?usp=sharing) should be downloaded and extracted.
+
+Run below commands to conduct an inference with the trained model.
+`python src/predict.py` 
+* `--model_type`: Specifies the type of model to use. `AIS` for Atom-in-SMILES tokenization scheme (`SMILES`, `SELFIES`, `DeepSmiles`, `SmilesPE`).
+* `--checkpoint_name`: Specifies the name of the checkpoint file that contains the trained model parameters.
+* `--input`: Specifies the input tokenized sequence for which the prediction should be made.
+For example:
+```python
+python src/predict.py --model_type AIS  --checkpoint_name AIS_checkpoint.pth
+ --input='[CH3;!R;O] [O;!R;CC] [C;!R;COO] ( = [O;!R;C] ) [c;R;CCS] 1 [cH;R;CC] [c;R;CCC] ( [CH2;!R;CC] [CH2;!R; CC] [CH2;!R;CC] [c;R;CCN] 2 [cH;R;CC] [c;R;CCC] 3 [c;R;CNO] ( = [O;!R;C] ) [nH;R;CC] [c;R;NNN] ( [NH2 ;!R;C] ) [n;R;CC] [c;R;CNN] 3 [nH;R;CC] 2 ) [cH;R;CS] [s;R;CC] 1'
+```
+
 ## Cite
 [![DOI](https://zenodo.org/ggh)
 
