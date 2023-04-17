@@ -1,7 +1,7 @@
-from parameters import *
-from utils import *
-from transformer import *
-from predict import *
+from .parameters import *
+from .utils import *
+from .transformer import *
+from .predict import *
 
 from torch import nn
 import torch
@@ -17,16 +17,16 @@ import numpy as np
 
 import logging
 
-def configure_logger(log_file=None):
+def configure_logger(log_file=None, level=logging.INFO):
     logging.basicConfig(
-        level=logging.INFO,
-        # format should be None to avoid double logging
-        format=None,
-        # format="%(asctime)s [%(levelname)s] %(message)s",
-        # datefmt="%Y-%m-%d %H:%M:%S",
+        level=level,
+        # use module name as output format
+        format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+        # don't use the default date format
+        datefmt="%Y-%m-%d %H:%M:%S",
         handlers=[
-            # logging.StreamHandler(sys.stdout),
-            logging.FileHandler(log_file) if log_file else logging.StreamHandler()
+            logging.StreamHandler(),
+            logging.FileHandler(log_file) if log_file else logging.NullHandler(),
         ],
     )
 

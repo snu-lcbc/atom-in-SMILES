@@ -1,4 +1,4 @@
-from parameters import *
+from .parameters import *
 
 import os, argparse
 import sentencepiece as spm

@@ -30,16 +30,16 @@ deepsmiles_converter = deepsmiles.Converter(rings=True, branches=True)
 
 import logging
 
-def configure_logger(log_file=None):
+def configure_logger(log_file=None, level=logging.INFO):
     logging.basicConfig(
-        level=logging.INFO,
-        # format should be None to avoid double logging
-        format=None,
-        # format="%(asctime)s [%(levelname)s] %(message)s",
-        # datefmt="%Y-%m-%d %H:%M:%S",
+        level=level,
+        # use module name as output format
+        format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+        # don't use the default date format
+        datefmt="%Y-%m-%d %H:%M:%S",
         handlers=[
-            # logging.StreamHandler(sys.stdout),
-            logging.FileHandler(log_file) if log_file else logging.StreamHandler()
+            logging.StreamHandler(),
+            logging.FileHandler(log_file) if log_file else logging.NullHandler(),
         ],
     )
 
@@ -52,7 +52,7 @@ else:
 def setup(model, checkpoint_name):
     #assert os.path.exists(f"{ckpt_dir}/{checkpoint_name}"), f"There is no checkpoint named {checkpoint_name}."
 
-    print("Loading checkpoint...\n")
+    logger.info("Loading checkpoint...\n")
     # checkpoint = torch.load(checkpoint_name)
     checkpoint = torch.load(f"{ckpt_dir}/{checkpoint_name}")
     model.load_state_dict(checkpoint['model_state_dict'])
@@ -239,8 +239,8 @@ def custom_validation_fn(model, test_loader, model_type, method='greedy'):
     seconds = seconds % 60
     elapsed_time = f"{hours}hrs {minutes}mins {seconds}secs"
 
-    print(f"{total, exact/total, _100/total, exact, _100, _90, _85, _80, _70, _60, _50, _40, _30, _20, _00, _invalid} \t{elapsed_time=}")
-    print(f"{np.mean(fp_tcs) = }")
+    logger.info(f"{total, exact/total, _100/total, exact, _100, _90, _85, _80, _70, _60, _50, _40, _30, _20, _00, _invalid} \t{elapsed_time=}")
+    logger.info(f"{np.mean(fp_tcs) = }")
     logger.info(f"{total, exact/total, _100/total, exact, _100, _90, _85, _80, _70, _60, _50, _40, _30, _20, _00, _invalid} \t{elapsed_time=}")
     logger.info(f"{np.mean(fp_tcs) = }")
 
@@ -366,22 +366,23 @@ def inference(model, input_sentence, model_type,  method):
     trg_sp.Load(f"{SP_DIR}/{model_type}_trg_sp.model")
 
     tokenized = src_sp.EncodeAsIds(input_sentence)
+    logger.info(f"Indexed tokens: {tokenized}")
     src_data = torch.LongTensor(pad_or_truncate(tokenized)).unsqueeze(0).to(device) # (1, L)
     e_mask = (src_data != pad_id).unsqueeze(1).to(device) # (1, 1, L)
 
     start_time = datetime.datetime.now()
 
-    #print("Encoding input sentence...")
+    logger.info("Model inference mode...")
     model.eval()
     src_data = model.src_embedding(src_data)
     src_data = model.positional_encoder(src_data)
     e_output = model.encoder(src_data, e_mask) # (1, L, d_model)
 
     if method == 'greedy':
-       # print("Greedy decoding selected.")
+        logger.info("Greedy decoding selected.")
         result = greedy_search(model, e_output, e_mask, trg_sp)
     elif method == 'beam':
-       # print("Beam search selected.")
+        logger.info("Beam search selected.")
         result, _ = beam_search(model, e_output, e_mask, trg_sp)
 
     end_time = datetime.datetime.now()
@@ -419,11 +420,12 @@ def main(args):
                     print('PredictionEnd|', _step)
 
     else:
-        print(f"Preprocessing input: {args.input}")
+        logger.info(f"Preprocessing input: {args.input}")
         model = setup(build_model(model_type=args.model_type), args.checkpoint_name)
         result = inference(model, args.input, args.model_type, args.decode)
+        logger.info(f"Predicted: {result}")
 
-    print('Done!')
+    logger.info('Done!')
 
 
 if __name__=='__main__':
@@ -432,21 +434,20 @@ if __name__=='__main__':
     parser.add_argument('--test_mode', action='store_true', help='Turn on testing mode')
     parser.add_argument('--batch_size', type=int, default=10, help='batch size')
     parser.add_argument('--input', type=str, required='--test_mode' not in sys.argv, help='An input sequence')
-    parser.add_argument('--decode', type=str, default='beam', help="greedy or beam?")
+    parser.add_argument('--decode', type=str, default='greedy', help="greedy or beam?")
     parser.add_argument('--beam_size', type=int, default=5, help="beam?")
     parser.add_argument('--checkpoint_name', type=str, default=None, help="checkpoint file name")
+    parser.add_argument('--log', type=str, default=None, help="log file name")
 
     args = parser.parse_args()
-    print(args)
+    configure_logger(args.log)
+
+    logger.info(args)
     assert args.decode == 'greedy' or args.decode =='beam', "Please specify correct decoding method, either 'greedy' or 'beam'."
     print(f'{args.decode} decoding searching method is selected.')
     if args.decode=='beam':
-        print('Beam size:', args.beam_size)
+        logger.info('Beam size:', args.beam_size)
     beam_size = args.beam_size
 
-    args.evaldir = Path(f'eval')
-    args.evaldir.mkdir(exist_ok=True, parents=True)
-
-    configure_logger(args.evaldir / f'{args.model_type}_eval_{args.checkpoint_name}_{args.decode}_{args.beam_size}.log')
     main(args)
 
