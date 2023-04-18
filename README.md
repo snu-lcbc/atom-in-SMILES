@@ -98,7 +98,7 @@ assert random_smiles == decoded_smiles_1
 |  Normalized repetition rate | [Normalized-Repetition-Rates.ipynb](https://github.com/snu-lcbc/atom-in-SMILES/blob/main/Normilized-Repetition-Rates.ipynb)| Natural products, drugs, metal complexes, lipids, stereoids, isomers |
 | Fingerprint nature of AIS | [AIS-as-fingerprint.ipynb](https://github.com/snu-lcbc/atom-in-SMILES/blob/main/AIS-as-fingerprint.ipynb) | AIS fingerprint resolution|
 | Single-token repetition (rep-l) |  | __USPTO-50K__, retrosynthetic translations|
-| input-output equivalent mapping |  | Augmented subset of __GDB-13__, noncanon-2-canon translations|
+| input-output equivalent mapping | [GDB13-results.ipynb](https://github.com/snu-lcbc/atom-in-SMILES/blob/main/GDB13-results.ipynb) | Augmented subset of __GDB-13__, noncanon-2-canon translations|
 
 For example, in retrosynthesis task:
 ```python
