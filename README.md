@@ -86,8 +86,18 @@ assert random_smiles == decoded_smiles_1
    
 <hr style="background: transparent; border: 0.5px dashed;"/>
 
-## Implementations
-### Single-step retrosynthesis
+## Implementations & Results
+
+| Implementation | File | 
+|----------------|------|
+| Single-step retrosynthesis |  [Read more](#single-step-retrosynthesis)   |
+| Molecular Property Prediction | [Molecular-property-prediction.ipynb](https://github.com/snu-lcbc/atom-in-SMILES/blob/main/Molecular-property-prediction.ipynb) |
+|  Normalized repetition rate | [Normalized-Repetition-Rates.ipynb](https://github.com/snu-lcbc/atom-in-SMILES/blob/main/Normilized-Repetition-Rates.ipynb)|
+| Fingerprint nature of AIS |  [AIS-as-fingerprint.ipynb](https://github.com/snu-lcbc/atom-in-SMILES/blob/main/AIS-as-fingerprint.ipynb) |
+
+
+
+#### Single-step retrosynthesis
 First, [checkpoints files](https://drive.google.com/file/d/1tDKIKrKWevgTgJjF8QZpd1IKxZr_Pc1q/view?usp=sharing) should be downloaded and extracted.
 
 Run below commands to conduct an inference with the trained model.
@@ -102,6 +112,7 @@ For example:
 python src/predict.py --model_type AIS  --checkpoint_name AIS_checkpoint.pth
  --input='[CH3;!R;O] [O;!R;CC] [C;!R;COO] ( = [O;!R;C] ) [c;R;CCS] 1 [cH;R;CC] [c;R;CCC] ( [CH2;!R;CC] [CH2;!R; CC] [CH2;!R;CC] [c;R;CCN] 2 [cH;R;CC] [c;R;CCC] 3 [c;R;CNO] ( = [O;!R;C] ) [nH;R;CC] [c;R;NNN] ( [NH2 ;!R;C] ) [n;R;CC] [c;R;CNN] 3 [nH;R;CC] 2 ) [cH;R;CS] [s;R;CC] 1'
 ```
+
 
 ## Cite
 [![DOI](https://zenodo.org/ggh)
