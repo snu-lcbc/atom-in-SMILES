@@ -88,34 +88,23 @@ assert random_smiles == decoded_smiles_1
 
 ## Implementations & Results
 
-| Implementation | File | 
-|----------------|------|
-| Single-step retrosynthesis |  [Read more](#single-step-retrosynthesis)   |
-| Molecular Property Prediction | [Molecular-property-prediction.ipynb](https://github.com/snu-lcbc/atom-in-SMILES/blob/main/Molecular-property-prediction.ipynb) |
-|  Normalized repetition rate | [Normalized-Repetition-Rates.ipynb](https://github.com/snu-lcbc/atom-in-SMILES/blob/main/Normilized-Repetition-Rates.ipynb)|
-| Fingerprint nature of AIS |  [AIS-as-fingerprint.ipynb](https://github.com/snu-lcbc/atom-in-SMILES/blob/main/AIS-as-fingerprint.ipynb) |
+| Implementation | Items |Description| 
+|----------------|------:|----|
+| Single-step retrosynthesis | `python src/predict.py` |  to conduct an inference with the trained model|
+|  | `--model_type` |  (`SMILES`, `SELFIES`, `DeepSmiles`, `SmilesPE`, `AIS`)
+|  | `--checkpoint_name` |  name of the checkpoint file [checkpoints files](https://drive.google.com/file/d/1tDKIKrKWevgTgJjF8QZpd1IKxZr_Pc1q/view?usp=sharing)
+|  | `--input` |  Tokenized input sequence
+| Molecular Property Prediction | [Molecular-property-prediction.ipynb](https://github.com/snu-lcbc/atom-in-SMILES/blob/main/Molecular-property-prediction.ipynb)| __MoleculeNet__: Classification (ESOL, FreeSolv, Lipo.), Regression (BBBP, BACE, HIV)|
+|  Normalized repetition rate | [Normalized-Repetition-Rates.ipynb](https://github.com/snu-lcbc/atom-in-SMILES/blob/main/Normilized-Repetition-Rates.ipynb)| Natural products, drugs, metal complexes, lipids, stereoids, isomers |
+| Fingerprint nature of AIS | [AIS-as-fingerprint.ipynb](https://github.com/snu-lcbc/atom-in-SMILES/blob/main/AIS-as-fingerprint.ipynb) | AIS fingerprint resolution|
+| Single-token repetition (rep-l) |  | __USPTO-50K__, retrosynthetic translations|
+| input-output equivalent mapping |  | Augmented subset of __GDB-13__, noncanon-2-canon translations|
 
-
-
-#### Single-step retrosynthesis
-First, [checkpoints files](https://drive.google.com/file/d/1tDKIKrKWevgTgJjF8QZpd1IKxZr_Pc1q/view?usp=sharing) should be downloaded and extracted.
-
-Run below commands to conduct an inference with the trained model.
-`python src/predict.py` 
-* `--model_type`: Specifies the type of model to use. `AIS` for Atom-in-SMILES tokenization scheme (`SMILES`, `SELFIES`, `DeepSmiles`, `SmilesPE`).
-* `--checkpoint_name`: Specifies the name of the checkpoint file that contains the trained model parameters.
-* `--input`: Specifies the input tokenized sequence for which the prediction should be made.
-* `--decode`: {greedy,beam}   Decoding method  (default: greedy)
-* `--beam_size`: BEAM_SIZE Beam size (a number of candidates for RetroTRAE) (default: 3)    
-For example:
+For example, in retrosynthesis task:
 ```python
 python src/predict.py --model_type AIS  --checkpoint_name AIS_checkpoint.pth
  --input='[CH3;!R;O] [O;!R;CC] [C;!R;COO] ( = [O;!R;C] ) [c;R;CCS] 1 [cH;R;CC] [c;R;CCC] ( [CH2;!R;CC] [CH2;!R; CC] [CH2;!R;CC] [c;R;CCN] 2 [cH;R;CC] [c;R;CCC] 3 [c;R;CNO] ( = [O;!R;C] ) [nH;R;CC] [c;R;NNN] ( [NH2 ;!R;C] ) [n;R;CC] [c;R;CNN] 3 [nH;R;CC] 2 ) [cH;R;CS] [s;R;CC] 1'
 ```
-
-
-## Cite
-[![DOI](https://zenodo.org/ggh)
 
 ### License
 
