@@ -48,12 +48,20 @@ or clone it from the GitHub repository and install locally.
 Usage & Demo
 ------------
 
-Brief descriptions of the main functions: \| Function \| Description \|
-\| ————————————- \| —————————————————————– \| \| ``atomInSmiles.encode``
-\| Converts a SMILES string into Atom-in-SMILES tokens. \| \|
-``atomInSmiles.decode`` \| Converts an Atom-in-SMILES tokens into SMILES
-string. \| \| ``atomInSmiles.similarity`` \| Calcuates Tanimoto
-coefficient of two Atom-inSMILSE tokens. \|
+Brief descriptions of the main functions:
+
+.. list-table::
+   :header-rows: 1
+
+   * - Function
+     - Description
+   * - ``atomInSmiles.encode``
+     - Converts a SMILES string into Atom-in-SMILES tokens.
+   * - ``atomInSmiles.decode``
+     - Converts an Atom-in-SMILES tokens into SMILES string.
+   * - ``atomInSmiles.similarity``
+     - Calcuates Tanimoto coefficient of two Atom-inSMILSE tokens.
+
 
 .. code:: python
 
@@ -104,117 +112,40 @@ SMILES should be provided with atom map numbers.
 
 Implementations & Results
 -------------------------
+.. list-table::
+   :header-rows: 1
 
-+-----------------------------------------+-----------------+---------+
-| Implementation                          | Items           | Desc    |
-|                                         |                 | ription |
-+=========================================+=================+=========+
-| Single-step retrosynthesis              | ``python s      | to      |
-|                                         | rc/predict.py`` | conduct |
-|                                         |                 | an      |
-|                                         |                 | in      |
-|                                         |                 | ference |
-|                                         |                 | with    |
-|                                         |                 | the     |
-|                                         |                 | trained |
-|                                         |                 | model   |
-+-----------------------------------------+-----------------+---------+
-|                                         | `               | (``SM   |
-|                                         | `--model_type`` | ILES``, |
-|                                         |                 | ``SEL   |
-|                                         |                 | FIES``, |
-|                                         |                 | `       |
-|                                         |                 | `DeepSm |
-|                                         |                 | iles``, |
-|                                         |                 | ``Smil  |
-|                                         |                 | esPE``, |
-|                                         |                 | `       |
-|                                         |                 | `AIS``) |
-+-----------------------------------------+-----------------+---------+
-|                                         | ``--ch          | name of |
-|                                         | eckpoint_name`` | the     |
-|                                         |                 | che     |
-|                                         |                 | ckpoint |
-|                                         |                 | file    |
-|                                         |                 | `chec   |
-|                                         |                 | kpoints |
-|                                         |                 | fi      |
-|                                         |                 | les <ht |
-|                                         |                 | tps://d |
-|                                         |                 | rive.go |
-|                                         |                 | ogle.co |
-|                                         |                 | m/file/ |
-|                                         |                 | d/1tDKI |
-|                                         |                 | KrKWevg |
-|                                         |                 | TgJjF8Q |
-|                                         |                 | Zpd1IKx |
-|                                         |                 | Zr_Pc1q |
-|                                         |                 | /view?u |
-|                                         |                 | sp=shar |
-|                                         |                 | ing>`__ |
-+-----------------------------------------+-----------------+---------+
-|                                         | ``--input``     | To      |
-|                                         |                 | kenized |
-|                                         |                 | input   |
-|                                         |                 | s       |
-|                                         |                 | equence |
-+-----------------------------------------+-----------------+---------+
-| Molecular Property Prediction           | `Molecular      | **      |
-|                                         | -property-predi | Molecul |
-|                                         | ction.ipynb <ht | eNet**: |
-|                                         | tps://github.co | Classif |
-|                                         | m/snu-lcbc/atom | ication |
-|                                         | -in-SMILES/blob | (ESOL,  |
-|                                         | /main/Molecular | Fr      |
-|                                         | -property-predi | eeSolv, |
-|                                         | ction.ipynb>`__ | Lipo.), |
-|                                         |                 | Reg     |
-|                                         |                 | ression |
-|                                         |                 | (BBBP,  |
-|                                         |                 | BACE,   |
-|                                         |                 | HIV)    |
-+-----------------------------------------+-----------------+---------+
-| Normalized repetition rate              | `Norma          | Natural |
-|                                         | lized-Repetitio | pr      |
-|                                         | n-Rates.ipynb < | oducts, |
-|                                         | https://github. | drugs,  |
-|                                         | com/snu-lcbc/at | metal   |
-|                                         | om-in-SMILES/bl | com     |
-|                                         | ob/main/Normili | plexes, |
-|                                         | zed-Repetition- | lipids, |
-|                                         | Rates.ipynb>`__ | ste     |
-|                                         |                 | reoids, |
-|                                         |                 | isomers |
-+-----------------------------------------+-----------------+---------+
-| Fingerprint nature of AIS               | `AI             | AIS     |
-|                                         | S-as-fingerprin | fing    |
-|                                         | t.ipynb <https: | erprint |
-|                                         | //github.com/sn | res     |
-|                                         | u-lcbc/atom-in- | olution |
-|                                         | SMILES/blob/mai |         |
-|                                         | n/AIS-as-finger |         |
-|                                         | print.ipynb>`__ |         |
-+-----------------------------------------+-----------------+---------+
-| Single-token repetition (rep-l)         | `rep-l_USP      | **USPTO |
-|                                         | TO50k.ipynb <ht | -50K**, |
-|                                         | tps://github.co | retrosy |
-|                                         | m/snu-lcbc/atom | nthetic |
-|                                         | -in-SMILES/blob | trans   |
-|                                         | /main/rep-l_USP | lations |
-|                                         | TO50k.ipynb>`__ |         |
-+-----------------------------------------+-----------------+---------+
-| input-output equivalent mapping         | `GDB13-r        | Au      |
-|                                         | esults.ipynb <h | gmented |
-|                                         | ttps://github.c | subset  |
-|                                         | om/snu-lcbc/ato | of      |
-|                                         | m-in-SMILES/blo | **GD    |
-|                                         | b/main/GDB13-re | B-13**, |
-|                                         | sults.ipynb>`__ | no      |
-|                                         |                 | ncanon- |
-|                                         |                 | 2-canon |
-|                                         |                 | trans   |
-|                                         |                 | lations |
-+-----------------------------------------+-----------------+---------+
+   * - Implementation
+     - Items
+     - Description
+   * - Single-step retrosynthesis
+     - ``python src/predict.py``
+     - to conduct an inference with the trained model
+   * - 
+     - ``--model_type``
+     - (``SMILES``, ``SELFIES``, ``DeepSmiles``, ``SmilesPE``, ``AIS``)
+   * - 
+     - ``--checkpoint_name``
+     - name of the checkpoint file `checkpoints files <https://drive.google.com/file/d/1tDKIKrKWevgTgJjF8QZpd1IKxZr_Pc1q/view?usp=sharing>`_
+   * - 
+     - ``--input``
+     - Tokenized input sequence
+   * - Molecular Property Prediction
+     - `Molecular-property-prediction.ipynb <https://github.com/snu-lcbc/atom-in-SMILES/blob/main/Molecular-property-prediction.ipynb>`_
+     - **MoleculeNet**: Classification (ESOL, FreeSolv, Lipo.), Regression (BBBP, BACE, HIV)
+   * - Normalized repetition rate
+     - `Normalized-Repetition-Rates.ipynb <https://github.com/snu-lcbc/atom-in-SMILES/blob/main/Normilized-Repetition-Rates.ipynb>`_
+     - Natural products, drugs, metal complexes, lipids, stereoids, isomers
+   * - Fingerprint nature of AIS
+     - `AIS-as-fingerprint.ipynb <https://github.com/snu-lcbc/atom-in-SMILES/blob/main/AIS-as-fingerprint.ipynb>`_
+     - AIS fingerprint resolution
+   * - Single-token repetition (rep-l)
+     - `rep-l_USPTO50k.ipynb <https://github.com/snu-lcbc/atom-in-SMILES/blob/main/rep-l_USPTO50k.ipynb>`_
+     - **USPTO-50K**, retrosynthetic translations
+   * - input-output equivalent mapping
+     - `GDB13-results.ipynb <https://github.com/snu-lcbc/atom-in-SMILES/blob/main/GDB13-results.ipynb>`_
+     - Augmented subset of **GDB-13**, noncanon-2-canon translations
+
 
 For example, in retrosynthesis task:
 
