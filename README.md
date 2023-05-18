@@ -27,7 +27,6 @@ translation, and molecular generative models.
 It can be installed directly from the GitHub repository.
 ```shell
 pip install atomInSmiles
-%% pip install git+https://github.com/snu-lcbc/atom-in-SMILES.git
 ```
 or clone it from the GitHub repository and install locally. 
 ```shell
