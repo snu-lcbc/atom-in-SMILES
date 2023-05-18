@@ -14,7 +14,7 @@ setup(name='atomInSmiles',
       url='https://github.com/snu-lcbc/atom-in-SMILES',
       packages=['atomInSmiles'],
       install_requires=[
-          'rdkit-pypi==2022.9.5',
+          'rdkit>=2022.9.5',
       ],
       python_requires='>=3.8',
       zip_safe=True
