@@ -24,7 +24,7 @@ translation, and molecular generative models.
 <hr style="background: transparent; border: 0.2px dashed;"/>
 
 ## Installation
-It can be installed directly from the GitHub repository.
+It can be installed using pip.
 ```shell
 pip install atomInSmiles
 ```
