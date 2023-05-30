@@ -1,6 +1,11 @@
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC_BY--NC_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
+[![J. Cheminformatics DOI](https://img.shields.io/badge/J._Cheminformatics-10.1186%2Fs13321--023--00725--9-blue)](https://doi.org/10.1186/s13321-023-00725-9)
+
 
 ## Atom-in-SMILES tokenization.
+
+ >Ucak UV, Ashyrmamatov I, Lee J (2023) Improving the quality of chemical language model outcomes with atom-in-SMILES tokenization. J Cheminformatics 15:55. https://doi.org/10.1186/s13321-023-00725-9
+  
 Tokenization is an important preprocessing step in natural language processing
 that may have a significant influence on prediction quality. This research showed
 that the traditional SMILES tokenization has a certain limitation that results in
@@ -20,6 +25,7 @@ adopted by broad related scientific communities, as it provides chemically
 accurate, tailor-made tokens for molecular property prediction, chemical
 translation, and molecular generative models.
 
+[Tutorial - Google Colab Notes](https://colab.research.google.com/drive/1Kry-nleryw5f6azttWPa7I8lCKLQwxzT?usp=sharing)
 
 <hr style="background: transparent; border: 0.2px dashed;"/>
 
@@ -104,6 +110,21 @@ For example, in retrosynthesis task:
 ```python
 python src/predict.py --model_type AIS  --checkpoint_name AIS_checkpoint.pth
  --input='[CH3;!R;O] [O;!R;CC] [C;!R;COO] ( = [O;!R;C] ) [c;R;CCS] 1 [cH;R;CC] [c;R;CCC] ( [CH2;!R;CC] [CH2;!R; CC] [CH2;!R;CC] [c;R;CCN] 2 [cH;R;CC] [c;R;CCC] 3 [c;R;CNO] ( = [O;!R;C] ) [nH;R;CC] [c;R;NNN] ( [NH2 ;!R;C] ) [n;R;CC] [c;R;CNN] 3 [nH;R;CC] 2 ) [cH;R;CS] [s;R;CC] 1'
+```
+
+### Cite this work
+```bash
+@article{10.1186/s13321-023-00725-9, 
+year = {2023}, 
+title = {{Improving the quality of chemical language model outcomes with atom-in-SMILES tokenization}}, 
+author = {Ucak, Umit V. and Ashyrmamatov, Islambek and Lee, Juyong}, 
+journal = {Journal of Cheminformatics}, 
+doi = {10.1186/s13321-023-00725-9}, 
+pages = {55}, 
+number = {1}, 
+volume = {15}, 
+keywords = {}
+}
 ```
 
 ### License
