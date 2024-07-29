@@ -3,7 +3,7 @@ import re
 from rdkit import Chem, RDLogger
 from rdkit.Chem import MolFromSmiles, MolToSmiles, CanonSmiles
  
-NONE_PHYSICAL_CHARACTERS = ('.', ':',  '-', '=', '#', '(', ')', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '\\', '/', '%')
+NONE_PHYSICAL_CHARACTERS = ('.', ':',  '-', '=', '#', '(', ')', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '\\', '/', '%', '<', '>')
 
 
 def encode(smiles, with_atomMap=False):
@@ -86,14 +86,10 @@ def decode(atomInSmiles):
     """ Converts Atom-in-SMILES tokens  back to SMILES string.
     Note: The Atom-in-SMILES tokens should be white space separated.
     """
-    pattern =  "(\[[^\]]+]|Br?|Cl?|N|O|S|P|F|I|b|c|n|o|s|p|\(|\)|\.|=|#|-|\+|\\\\|\/|:|~|@|\?|>|\*|\$|\%[0-9]{2}|[0-9])"
+    pattern =  "(\[[^\]]+]|Br?|Cl?|N|O|S|P|F|I|b|c|n|o|s|p|\(|\)|\.|=|#|-|\+|\\\\|\/|:|~|@|\?|>|<|\*|\$|\%[0-9]{2}|[0-9])"
     regex = re.compile(pattern)
     smarts = ''
-    for new_token in atomInSmiles.split():
-        try:
-            token = regex.findall(new_token)[0]
-        except:
-            token = new_token
+    for token in regex.findall(atomInSmiles):
         if '[[' in token:
             smarts += token[1:]
         else:
